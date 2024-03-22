@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess my number game</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="numGame.css" />
+    <script src="numGame.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Guess my number!</h1>
+      <hr />
+      <p>
+        The color of the screen will indicate whether your guess is getting
+        hotter or colder!
+      </p>
+      <p class="numRange">The number is between 1 and 20</p>
+      <button class="Restart" onclick="OnClicKBtn()">Restart game!</button>
+      <div class="correctNumber">?</div>
+    </header>
+    <main>
+      <section class="left">
+        <input type="number" class="input" />
+        <button class="btnGuess" onclick="OnClicKBtn()">Guess!</button>
+      </section>
+      <section class="right">
+        <p class="message">Make a guess!</p>
+        <p class="label-score">
+          <i class="fa-regular fa-star"></i> Score:
+          <span class="score">20</span>
+        </p>
+        <p class="label-highscore">
+          <i class="fa-solid fa-star"></i> Highscore:
+          <span class="highscore">0</span>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
