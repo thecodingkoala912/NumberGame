@@ -1,54 +1,71 @@
 document.addEventListener("DOMContentLoaded", function () {
   let correctNumber;
   let gameWon = false;
-  2;
+  let scoreElement = document.querySelector(".score");
+  let userInput = document.querySelector(".input");
+  let messageElement = document.querySelector(".message");
+  let guessBtn = document.querySelector(".btnGuess");
+  let secretNumber = document.querySelector(".secretNumber");
+  let bodyColor = document.querySelector("body");
 
-  function OnClicKBtn(e) {
-    let score = Number(document.querySelector(".score").textContent);
-
-    // Restart game
-    score = 20;
-    document.querySelector(".score").textContent = score;
-    document.querySelector(".message").textContent = "Make a guess!";
-    correctNumber = Math.trunc(Math.random() * 20) + 1;
-    document.querySelector(".input").value = "";
-    document.querySelector(".btnGuess").disabled = false;
-    gameWon = false;
+  function resetStyles() {
+    bodyColor.style.backgroundImage = "";
+    secretNumber.style.width = "";
+    secretNumber.textContent = "?";
+    guessBtn.style.color = "#111111";
+    guessBtn.style.backgroundColor = "#ffffff";
   }
 
-  document.querySelector(".Restart").addEventListener("click", OnClicKBtn);
+  function OnClicKBtn(e) {
+    // Restart game
+    let score = 20;
+    scoreElement.textContent = score;
+    messageElement.textContent = "Make a guess!";
+    correctNumber = Math.trunc(Math.random() * 20) + 1;
+    userInput.value = "";
+    guessBtn.disabled = false;
+    gameWon = false;
+    resetStyles();
+  }
 
-  document.querySelector(".btnGuess").addEventListener("click", function () {
-    const guess = Number(document.querySelector(".input").value);
-    let score = Number(document.querySelector(".score").textContent);
+  document.querySelector(".btnRestart").addEventListener("click", OnClicKBtn);
+
+  guessBtn.addEventListener("click", function () {
+    const guess = Number(userInput.value);
+    let score = Number(scoreElement.textContent);
 
     if (!guess) {
-      document.querySelector(".message").textContent =
-        "You have not entered a number yet!";
-    } else {
-      if (guess === correctNumber) {
-        document.querySelector(".message").textContent =
-          "Congratulations! You found the correct number!";
-        document.querySelector(".btnGuess").disabled = true;
-        gameWon = true;
-      } else if (guess > correctNumber || guess < correctNumber) {
-        if (score > 1) {
-          const message =
-            guess > correctNumber
-              ? "Your guess is too high!"
-              : "Your guess is too low!";
-          document.querySelector(".message").textContent = message;
-          score--;
-          document.querySelector(".score").textContent = score;
-        } else {
-          document.querySelector(".message").textContent = "You lost the game!";
-          document.querySelector(".btnGuess").disabled = true;
-          setTimeout(function () {
-            if (!gameWon) {
-              alert("You already lost! Hit the Restart button.");
-            }
-          }, 100);
-        }
+      messageElement.textContent = "You have not entered a number yet!";
+      return;
+    }
+    if (guess === correctNumber) {
+      messageElement.textContent =
+        "Congratulations! You found the correct number!";
+      guessBtn.disabled = true;
+      gameWon = true;
+      bodyColor.style.backgroundImage =
+        "linear-gradient(110.7deg, rgb(255, 81, 47) 1.7%, rgb(255, 167, 47) 8.2%, rgb(218, 253, 1) 16.2%, rgb(98, 234, 20) 23.4%, rgb(69, 193, 42) 32.8%, rgb(7, 249, 149) 43.7%, rgb(6, 200, 217) 55.3%, rgb(18, 51, 233) 65.5%, rgb(122, 59, 202) 74.5%, rgb(231, 7, 249) 82.3%, rgb(202, 59, 163) 91.4%)";
+      secretNumber.style.width = "30rem";
+      secretNumber.textContent = correctNumber;
+      guessBtn.style.color = "#808080";
+      guessBtn.style.backgroundColor = "#c0c0c0";
+    } else if (guess > correctNumber || guess < correctNumber) {
+      if (score > 1) {
+        const message =
+          guess > correctNumber
+            ? "Your guess is too high!"
+            : "Your guess is too low!";
+        messageElement.textContent = message;
+        score--;
+        scoreElement.textContent = score;
+      } else {
+        messageElement.textContent = "You lost the game!";
+        guessBtn.disabled = true;
+        setTimeout(function () {
+          if (!gameWon) {
+            alert("You already lost! Hit the Restart button.");
+          }
+        }, 100);
       }
     }
   });
