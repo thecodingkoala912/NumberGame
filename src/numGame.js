@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let guessBtn = document.querySelector(".btnGuess");
   let secretNumber = document.querySelector(".secretNumber");
   let bodyColor = document.querySelector("body");
+  let originalBackgroundColor = bodyColor.style.backgroundColor;
 
   function resetStyles() {
     bodyColor.style.backgroundImage = "";
@@ -16,8 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     guessBtn.style.backgroundColor = "#ffffff";
   }
 
-  function OnClicKBtn(e) {
-    // Restart game
+  function OnClickBtn(e) {
     let score = 20;
     scoreElement.textContent = score;
     messageElement.textContent = "Make a guess!";
@@ -28,7 +28,30 @@ document.addEventListener("DOMContentLoaded", function () {
     resetStyles();
   }
 
-  document.querySelector(".btnRestart").addEventListener("click", OnClicKBtn);
+  document.querySelector(".input").addEventListener("input", function () {
+    const value = this.value.trim();
+    const num = parseInt(value);
+
+    if (isNaN(num)) {
+      alert("Please enter a valid number.");
+      this.value = "";
+      return;
+    }
+
+    if (num < 1 || num > 20) {
+      alert("Please enter a number between 1 and 20.");
+      this.value = "";
+      return;
+    }
+
+    if (num !== parseFloat(value)) {
+      alert("Please enter a whole number.");
+      this.value = "";
+      return;
+    }
+  });
+
+  document.querySelector(".btnRestart").addEventListener("click", OnClickBtn);
 
   guessBtn.addEventListener("click", function () {
     const guess = Number(userInput.value);
@@ -38,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
       messageElement.textContent = "You have not entered a number yet!";
       return;
     }
+
     if (guess === correctNumber) {
       messageElement.textContent =
         "Congratulations! You found the correct number!";
@@ -69,5 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-  OnClicKBtn();
+
+  OnClickBtn();
 });
