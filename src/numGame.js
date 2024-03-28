@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let secretNumber = document.querySelector(".secretNumber");
   let bodyColor = document.querySelector("body");
   let originalBackgroundColor = bodyColor.style.backgroundColor;
+  let highscore = 0;
 
   function resetStyles() {
     bodyColor.style.backgroundImage = "";
@@ -73,6 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
       secretNumber.textContent = correctNumber;
       guessBtn.style.color = "#808080";
       guessBtn.style.backgroundColor = "#c0c0c0";
+
+      if (score > highscore) {
+        highscore = score;
+        document.querySelector(".highscore").textContent = score;
+      }
     } else if (guess > correctNumber || guess < correctNumber) {
       if (score > 1) {
         const message =

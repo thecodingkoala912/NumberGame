@@ -126,13 +126,23 @@ btnGuess:hover {
   margin-bottom: 8rem;
   height: 3rem;
   font-size: 3rem;
+  align-items: center;
+}
+.bottom-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.label-score {
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
-}
+.label-score,
 .label-highscore {
-  margin-bottom: 2rem;
   font-size: 2.5rem;
+  color: white;
+  margin-right: 100px;
+  margin-left: 100px;
 }
