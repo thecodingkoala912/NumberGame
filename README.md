@@ -13,8 +13,7 @@ A fun, interactive web game where players try to guess a randomly generated numb
 
 ## 🖼️ Demo
 
-*(Add a screenshot here if available)*  
-`![Guess My Number Screenshot](Screenshot.png)`
+![Guess My Number Screenshot](Screenshot.png)
 
 ## 🛠️ Technologies Used
 
