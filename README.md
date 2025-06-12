@@ -2,6 +2,14 @@
 
 A fun, interactive web game where players try to guess a randomly generated number between 1 and 20. Built using HTML, CSS, and JavaScript.
 
+## 🚀 Live Demo
+
+👉 [Play the game here](https://thecodingkoala912.github.io/NumberGame/)
+
+![Game Screenshot](Screenshot.png)
+
+---
+
 ## 🚀 Features
 
 * Random number generation between 1 and 20  
