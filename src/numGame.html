@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess my number game</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="numGame.css" />
+    <link href="https://fonts.cdnfonts.com/css/hiskyflipper" rel="stylesheet" />
+    <script src="numGame.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Guess my number!</h1>
+      <hr />
+      <p class="numRange">The number is between 1 and 20!</p>
+      <button class="btnRestart" onclick="OnClicKBtn()">Restart game!</button>
+      <div class="secretNumber">?</div>
+    </header>
+    <main>
+      <section class="left">
+        <input type="number" class="input" id="numberInput" />
+        <button class="btnGuess" onclick="OnClicKBtn()">Guess!</button>
+      </section>
+
+      <section class="right">
+        <p class="message">Make a guess!</p>
+      </section>
+      <div class="bottom-container">
+        <p class="label-score">
+          <i class="fa-regular fa-star"></i> Score:
+          <span class="score">20</span>
+        </p>
+        <p class="label-highscore">
+          <i class="fa-solid fa-star"></i> Highscore:
+          <span class="highscore">0</span>
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
