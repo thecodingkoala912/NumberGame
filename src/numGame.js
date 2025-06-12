@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let originalBackgroundColor = bodyColor.style.backgroundColor;
   let highscore = 0;
 
+  const clickSound = new Audio('../assets/sounds/click.wav');
+  const gameOverSound = new Audio('../assets/sounds/gameOverSound.wav');
+
   function resetStyles() {
     bodyColor.style.backgroundImage = "";
     secretNumber.style.width = "";
@@ -55,6 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".btnRestart").addEventListener("click", OnClickBtn);
 
   guessBtn.addEventListener("click", function () {
+    clickSound.play();
+
     const guess = Number(userInput.value);
     let score = Number(scoreElement.textContent);
 
@@ -91,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         messageElement.textContent = "You lost the game!";
         guessBtn.disabled = true;
+        gameOverSound.play();
         setTimeout(function () {
           if (!gameWon) {
             alert("You already lost! Hit the Restart button.");
